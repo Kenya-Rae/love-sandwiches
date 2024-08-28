@@ -17,15 +17,21 @@ def get_sales_date():
     Get Sales figures input from the user
     """
 
-    print("Please enter sales date from the last markert.")
-    print("Data should be six numbers, seperated by commas.")
-    print("Example: 10,20,30,40,50,60\n")
+    while True:
+        print("Please enter sales date from the last markert.")
+        print("Data should be six numbers, seperated by commas.")
+        print("Example: 10,20,30,40,50,60\n")
 
-    data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here: ")
 
-    sales_data = data_str.split(",")
-    validate_date(sales_data)
+        sales_data = data_str.split(",")
+        validate_date(sales_data)
 
+        if validate_date(sales_data):
+            print("Data is VALID!")
+            break
+
+        return sales_data
 
 def validate_date(values):
     """
@@ -41,6 +47,9 @@ def validate_date(values):
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
 
 
-get_sales_date()
+data = get_sales_date()
