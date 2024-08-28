@@ -34,12 +34,13 @@ def validate_date(values):
     or if there aren't exactly 6 values.
     """
     try:
-        if len(values) != 6:
+         [int(value) for value in values]
+         if len(values) != 6:
             raise ValueError(
                 f"Exaclty 6 values are requried, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n")
+        print(f"Invalid data: {e}, please try again.\n")
 
 
 get_sales_date()
